@@ -25,6 +25,7 @@ const ClassBlock = () => {
                     <th scope="col">Суперклассы</th>
                     <th scope="col">Атрибуты</th>
                     <th scope="col">Отношения</th>
+                    <th scope="col"/>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,11 @@ const ClassBlock = () => {
                         <td>{classEntity.relations.map(function (rel) {
                             return (<li>{rel.name} ({rel.domain} -> {rel.range})</li>)
                         })}</td>
+                        <td>
+                            <button className="btn btn-secondary" type="button">
+                                Удалить
+                            </button>
+                        </td>
                     </tr>
                 ))}
                 <tr>

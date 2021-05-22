@@ -15,9 +15,11 @@ const Navbar = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="/instance">Индивиды</a>
                     </li>
-
+                    <li>&nbsp;&nbsp;&nbsp;</li>
+                    <li>&nbsp;&nbsp;&nbsp;</li>
+                    <li>&nbsp;&nbsp;&nbsp;</li>
                     <li className="nav-item">
-                        <span className="nav-link active">Выбранная онтология: 1</span>
+                        <span align="right" className="nav-link active">Выбранная онтология: Family</span>
                     </li>
 
                 </ul>
