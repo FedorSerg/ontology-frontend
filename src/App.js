@@ -1,27 +1,28 @@
 import Navbar from './Navbar';
 import HomeBlock from './blocks/HomeBlock';
 import OntologyBlock from "./blocks/OntologyBlock";
+import OntologyCreateBlock from "./blocks/OntologyCreateBlock";
 import ClassBlock from './blocks/ClassBlock';
+import ClassCreateBlock from './blocks/ClassCreateBlock';
 import InstanceBlock from './blocks/InstanceBlock';
+import InstanceCreateBlock from './blocks/InstanceCreateBlock';
+import AttributeCreateBlock from './blocks/AttributeCreateBlock';
+import RelationCreateBlock from './blocks/RelationCreateBlock';
 
-import {useState, createContext} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
-const OntologyIdContext = createContext(0);
+import {useState} from "react";
 
 function App() {
-    const [OntologyIdContext, setOntologyId] = useState();
+    const [ontologyIdVar, setOntologyIdVar] = useState(0);
 
     const handleOntologyChoosing = (ontologyId) => {
-        console.log('ontologyId');
-        console.log(ontologyId);
-        setOntologyId(ontologyId);
+        setOntologyIdVar(ontologyId);
     }
 
     return (
         <Router>
             <div className="App">
-                <Navbar />
+                <Navbar id={ontologyIdVar}/>
                 <main className="jumbotron">
                     <div className="container">
                         <Switch>
@@ -29,11 +30,26 @@ function App() {
                             <Route exact path="/ontology">
                                 <OntologyBlock handleOntologyChoosing={handleOntologyChoosing}/>
                             </Route>
-                            <Route exact path="/class">
+                            <Route exact path="/ontology-create">
+                                <OntologyCreateBlock />
+                            </Route>
+                            <Route exact path="/ontology/:id/class">
                                 <ClassBlock />
                             </Route>
-                            <Route exact path="/instance">
+                            <Route exact path="/ontology/:id/class-create">
+                                <ClassCreateBlock />
+                            </Route>
+                            <Route exact path="/ontology/:id/instance">
                                 <InstanceBlock />
+                            </Route>
+                            <Route exact path="/ontology/:id/instance-create">
+                                <InstanceCreateBlock />
+                            </Route>
+                            <Route exact path="/ontology/:id/attribute-create">
+                                <AttributeCreateBlock />
+                            </Route>
+                            <Route exact path="/ontology/:id/relation-create">
+                                <RelationCreateBlock />}/>
                             </Route>
                         </Switch>
                     </div>

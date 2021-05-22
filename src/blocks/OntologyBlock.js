@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
 
 const OntologyBlock = ({handleOntologyChoosing}) => {
     const [ontologies, setOntologies] = useState(null);
@@ -12,6 +13,15 @@ const OntologyBlock = ({handleOntologyChoosing}) => {
                 setOntologies(data)
             });
     }, []);
+
+    const handleOntologyDelete = (id) => {
+        console.log('delete ' + id);
+        fetch('http://localhost:8080/api/ontology/' + id, {
+            method: 'DELETE'
+        }).then(() => {
+            window.location.reload();
+        })
+    }
 
     return (
         <div className="container">
@@ -35,15 +45,20 @@ const OntologyBlock = ({handleOntologyChoosing}) => {
                                 Выбрать
                             </button>
                         </td>
+                        <td>
+                            <button className="btn btn-secondary" type="button"
+                                    onClick={() => handleOntologyDelete(ontology.id)}>
+                                Удалить
+                            </button>
+                        </td>
                     </tr>
                 ))}
                 <tr>
                     <th scope="row"/>
                     <td>
-                        <button className="btn btn-secondary" type="button"
-                                id="createButton">
+                        <Link className="btn btn-secondary" to="/ontology-create" role="button">
                             Добавить
-                        </button>
+                        </Link>
                     </td>
                 </tr>
                 </tbody>
