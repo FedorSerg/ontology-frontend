@@ -40,6 +40,15 @@ const InstanceBlock = () => {
                         })}</td>
                     </tr>
                 ))}
+                <tr>
+                    <th scope="row"/>
+                    <td>
+                    <button className="btn btn-secondary" type="button"
+                            id="createButton">
+                        Добавить
+                    </button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
