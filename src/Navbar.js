@@ -19,6 +19,7 @@ const Navbar = ({id}) => {
             <Link className="navbar-brand" to="/">Ontology Project</Link>
             <div className="collapse navbar-collapse" id="navbarMain">
                 <ul className="navbar-nav mr-auto">
+
                     <li className="nav-item">
                         <Link className="nav-link" to="/ontology">Онтологии</Link>
                     </li>
